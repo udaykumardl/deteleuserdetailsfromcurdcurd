@@ -9,7 +9,7 @@ function handleFormSubmit(event){
         email ,
         phone
     }
-    axios.post("https://crudcrud.com/api/98c4f0712e654294a4525fbba7a7a79c/appoinmentdata", obj)
+    axios.post("https://crudcrud.com/api/9014652d3f004f51b4eb16318c758874/appoinmentdata", obj)
     .then((response)=>{
         showUserOnScreen(response.data)
         console.log(response)
@@ -21,7 +21,7 @@ function handleFormSubmit(event){
 }
 
 window.addEventListener("DOMContentLoaded",()=>{
- axios.get("https://crudcrud.com/api/98c4f0712e654294a4525fbba7a7a79c/appoinmentdata")
+ axios.get("https://crudcrud.com/api/9014652d3f004f51b4eb16318c758874/appoinmentdata")
     .then((response)=>{
         console.log(response)
 
@@ -35,6 +35,8 @@ window.addEventListener("DOMContentLoaded",()=>{
 })
 
 function showUserOnScreen(obj){
+
+    
     document.getElementById('name').value='';
     document.getElementById('email').value='';
     document.getElementById('phone').value='';
@@ -44,8 +46,8 @@ function showUserOnScreen(obj){
     const childnode=`<li id=${obj._id}> ${obj.name} -${obj.email}-${obj.phone} 
                     <button onclick=DeleteUser('${obj._id}') >Delete User</button>
                     <button onclick="editUserDetails('${obj._id}','${obj.name}','${obj.email}','${obj.phone}')">Edit User</button>
-                    <span class="delete-icon" onclick="DeleteUser('${obj._id}')">&#10006;</span>
-                    </li> `;
+                    
+                </li> `;
     parentNode.innerHTML=parentNode.innerHTML+childnode;
 }
 
@@ -58,7 +60,7 @@ function editUserDetails(id,name,email,phone){
 }
 
 function DeleteUser(id){
-    axios.delete(`https://crudcrud.com/api/98c4f0712e654294a4525fbba7a7a79c/appoinmentdata/${id}`)
+    axios.delete(`https://crudcrud.com/api/9014652d3f004f51b4eb16318c758874/appoinmentdata/${id}`)
     .then((res)=>{
         removeUserFromScreen(id)
     })
